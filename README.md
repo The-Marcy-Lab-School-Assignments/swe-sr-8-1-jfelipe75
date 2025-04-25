@@ -23,10 +23,6 @@ Your task:
 
 ---
 
-### Answer
-
-When a user initially opens the app, he or she is making a request to instagram's server to serve them the HTML,CSS and JavaScript static files. from the server files instagram will query the most recent posts and user information in the Database to be displayed first.
-
 ## If a user likes a picture in his feed, then we would make a INSERT INTO query into a table with four columns, (id, picture, likes, comments) then we would update the like counter using the id of the picture to update the post's like counter
 
 2. Come up with an analogy to help someone new to coding understand these layers.
@@ -35,12 +31,6 @@ When a user initially opens the app, he or she is making a request to instagram'
 - Make sure your analogy maps clearly to the roles of the frontend, backend, and database.
 
 ---
-
-### Answer
-
-Imagine the frontend is the restaurant's menu, Through our frontend users are able to interact with the food items, wether is just reading through them or actually making an order, this all starts in the client layer (frontend).
-
-The backend is the restaurant itself, think of it as the brain connecting everything, We have waiters taking orders from people and sending them to our Chef, our database and then serving each customer the right meal.
 
 ## And the database is the chef mixing all the ingredients to formulate queries in order retrieve meaningful data from the database.
 
@@ -53,4 +43,53 @@ Audience: Imagine you're writing this for someone who's just starting out in web
 
 Length: Around 400–600 words.
 
-### Answer
+### Article
+
+# Understanding a Fullstack Application Through Instagram
+
+## How Instagram Works Across Three Layers
+
+When a user opens Instagram, they are making a request to Instagram’s server to deliver the static files — **HTML**, **CSS**, and **JavaScript** — that make up the **frontend**. These files allow the user to interact with Instagram’s platform.
+
+Once the frontend is loaded, if the user scrolls through their feed, likes a post, or uploads a photo, the frontend sends requests to the **backend**, an Express server in a typical fullstack setup. The backend processes the user’s actions, translates them into operations, and communicates with the **database**.
+
+For example:
+
+- **Scrolling the feed**: The frontend sends a request to the backend, which queries the database for the latest posts, and sends them back to be displayed.
+- **Liking a post**: The frontend sends a like action. The backend updates the likes count in the database for that particular post (likely identified by a unique ID).
+- **Uploading a photo**: The frontend sends the photo to the backend, which saves it (often in cloud storage) and stores metadata (such as user ID, time, and description) in the database.
+
+Thus, data flows like this:
+**Frontend ➔ Backend ➔ Database ➔ Backend ➔ Frontend**
+
+---
+
+## A Helpful Analogy: The Restaurant Model
+
+Imagine the three layers as parts of a restaurant experience:
+
+- **Frontend (Menu and Waiter)**: The menu is like the user interface. It shows users (diners) what they can do (order food, ask for water, etc.). The waiter takes your orders and serves you, acting as the user’s connection to the kitchen.
+- **Backend (Kitchen Operations)**: The kitchen is the backend. It receives orders from the waiter (frontend), processes them (prepares food), and sends back the final dishes.
+- **Database (Ingredients in the Pantry)**: The pantry holds all the raw ingredients needed to make the food. It’s the database storing persistent information (posts, users, likes).
+
+When you order food, the waiter (frontend) communicates with the kitchen (backend), which pulls ingredients (data) from the pantry (database) to prepare your meal and serve it to you.
+
+---
+
+## Why the Separation Matters
+
+Separating concerns into three layers keeps the system clean, efficient, and maintainable.
+
+- **Frontend** focuses only on the user experience.
+- **Backend** focuses only on business logic and communication.
+- **Database** focuses only on data storage and retrieval.
+
+If everything were lumped into a single layer, it would be chaotic:
+
+- UI changes could break backend logic.
+- Database issues could crash the whole app.
+- Updating features would become incredibly difficult.
+
+By maintaining clear boundaries, developers can work on the user interface without worrying about database queries, and database engineers can optimize storage without breaking the app’s look and feel. It enables teams to move faster, build more complex applications, and create better user experiences.
+
+---
